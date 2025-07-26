@@ -10,11 +10,17 @@ import employeeRouter from "./routes/employee.js"
 import leaveRouter from "./routes/leave.js"
 import salaryRouter from "./routes/salary.js"
 import settingRouter from "./routes/setting.js"
+import {userRegister} from './userSeed.js'
 
 connectToDatabase()
 const app = express()
 dotenv.config();
-app.use(cors())
+app.use(cors({
+    origin: "https://employee-frontend-lqd5.vercel.app",
+    credentials: true
+}))
+
+
 app.use(express.json())
 app.use(express.static('public/uploads'))
 app.use('/api/auth', authRouter)
